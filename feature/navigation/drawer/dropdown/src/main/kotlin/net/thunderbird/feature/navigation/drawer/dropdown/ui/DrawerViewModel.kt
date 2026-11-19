@@ -168,6 +168,10 @@ internal class DrawerViewModel(
                 )
             }
 
+            is Event.SetStartupAccountOverview -> {
+                updateState { it.copy(showAccountSelection = event.enabled) }
+            }
+
             Event.OnAccountSelectorClick -> {
                 viewModelScope.launch {
                     delay(ACCOUNT_CLOSE_DELAY)
@@ -190,6 +194,7 @@ internal class DrawerViewModel(
         }
     }
 
+
     private fun selectAccount(accountId: AccountId?) {
         if (accountId != state.value.selectedAccountId) {
             viewModelScope.launch {
@@ -198,15 +203,10 @@ internal class DrawerViewModel(
                         selectedAccountId = accountId,
                     )
                 }
-                delay(ACCOUNT_CLOSE_DELAY)
-                updateState {
-                    it.copy(
-                        showAccountSelection = false,
-                    )
-                }
             }
         }
     }
+
 
     private fun selectFolder(folderId: String?) {
         // Find the folder with the given ID

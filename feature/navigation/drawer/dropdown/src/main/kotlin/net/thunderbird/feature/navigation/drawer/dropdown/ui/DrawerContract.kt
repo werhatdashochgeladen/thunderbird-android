@@ -45,6 +45,7 @@ internal interface DrawerContract {
         data class OnAccountClick(val account: DisplayAccount) : Event
         data class OnAccountViewClick(val account: DisplayAccount) : Event
         data class OnFolderClick(val folder: DisplayFolder) : Event
+        data class SetStartupAccountOverview(val enabled: Boolean) : Event
         data object OnAccountSelectorClick : Event
         data object OnSettingsClick : Event
         data object OnSyncAccount : Event

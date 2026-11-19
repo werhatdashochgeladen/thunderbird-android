@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="start_account_overview_title">Kontenübersicht beim Start anzeigen</string>
+    <string name="start_account_overview_summary">Beim normalen Start alle E-Mail-Konten statt des Posteingangs anzeigen</string>
     <!--=== App-specific strings =============================================================-->
     <!--This should make it easier for forks to change the branding-->
     <!--Used in AndroidManifest.xml-->

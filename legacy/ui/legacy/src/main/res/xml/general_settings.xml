@@ -221,6 +221,13 @@
             >
 
             <CheckBoxPreference
+                android:key="show_account_overview_on_startup"
+                android:defaultValue="true"
+                android:title="@string/start_account_overview_title"
+                android:summary="@string/start_account_overview_summary"
+                />
+
+            <CheckBoxPreference
                 android:key="show_unified_inbox"
                 android:title="@string/show_unified_inbox_title"
                 />

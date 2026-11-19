@@ -207,6 +207,22 @@ open class MessageHomeActivity :
         displayViews()
         initializeFoldableObserver()
 
+
+        // Kontenmenü beim normalen App-Start automatisch öffnen
+        if (generalSettingsManager.getConfig().display.coreSettings.showAccountOverviewOnStartup &&
+            savedInstanceState == null &&
+            intent.action != Intent.ACTION_SEARCH &&
+            messageReference == null &&
+            !messageViewOnly
+        ) {
+            window.decorView.post {
+                if (!isFinishing && !isDestroyed) {
+                    (navigationDrawer as? net.thunderbird.feature.navigation.drawer.dropdown.DropDownDrawer)?.openAccountOverview()
+                }
+            }
+        }
+
+
         val backPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 this@MessageHomeActivity.handleOnBackPressed(this)

@@ -1,5 +1,6 @@
 package net.thunderbird.feature.navigation.drawer.dropdown
 
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.platform.ComposeView
@@ -25,6 +26,7 @@ import org.koin.core.component.inject
 internal data class FolderDrawerState(
     val selectedAccountId: AccountId? = null,
     val selectedFolderId: String? = null,
+    val showAccountOverview: Boolean = false,
 )
 
 @Suppress("LongParameterList")
@@ -46,6 +48,11 @@ class DropDownDrawer(
 
     init {
         drawer.addDrawerListener(createDrawerListener())
+        drawer.addDrawerListener(object : DrawerLayout.SimpleDrawerListener() {
+            override fun onDrawerClosed(drawerView: View) {
+                drawerState.update { it.copy(showAccountOverview = false) }
+            }
+        })
 
         // Make insets available to the drawer's Compose content
         ViewCompat.setOnApplyWindowInsetsListener(drawer) { _, insets ->
@@ -103,6 +110,11 @@ class DropDownDrawer(
                 selectedFolderId = null,
             )
         }
+    }
+
+    fun openAccountOverview() {
+        drawerState.update { it.copy(showAccountOverview = true) }
+        open()
     }
 
     override fun open() {

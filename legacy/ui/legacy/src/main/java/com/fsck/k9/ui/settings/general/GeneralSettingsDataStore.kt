@@ -43,6 +43,7 @@ class GeneralSettingsDataStore(
         val messageListSettings = visualSettings.messageListSettings
         return when (key) {
             "fixed_message_view_theme" -> coreSettings.fixedMessageViewTheme
+            "show_account_overview_on_startup" -> coreSettings.showAccountOverviewOnStartup
             "show_unified_inbox" -> inboxSettings.isShowUnifiedInbox
             "show_starred_count" -> inboxSettings.isShowStarredCount
             "messagelist_stars" -> inboxSettings.isShowMessageListStars
@@ -77,6 +78,7 @@ class GeneralSettingsDataStore(
     override fun putBoolean(key: String, value: Boolean) {
         when (key) {
             "fixed_message_view_theme" -> setFixedMessageViewTheme(value)
+            "show_account_overview_on_startup" -> setShowAccountOverviewOnStartup(value)
             "drawerExpandAllFolder" -> setDrawerExpandAllFolder(drawerExpandAllFolder = value)
             "show_unified_inbox" -> setIsShowUnifiedInbox(value)
             "show_starred_count" -> setIsShowStarredCount(isShowStarredCount = value)
@@ -375,6 +377,19 @@ class GeneralSettingsDataStore(
                 display = settings.display.copy(
                     coreSettings = settings.display.coreSettings.copy(
                         splitViewMode = mode,
+                    ),
+                ),
+            )
+        }
+    }
+
+    private fun setShowAccountOverviewOnStartup(value: Boolean) {
+        skipSaveSettings = true
+        generalSettingsManager.update { settings ->
+            settings.copy(
+                display = settings.display.copy(
+                    coreSettings = settings.display.coreSettings.copy(
+                        showAccountOverviewOnStartup = value,
                     ),
                 ),
             )

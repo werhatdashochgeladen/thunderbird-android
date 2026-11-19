@@ -50,6 +50,10 @@ internal fun DrawerView(
         dispatch(Event.SelectFolder(drawerState.selectedFolderId))
     }
 
+    LaunchedEffect(drawerState.showAccountOverview) {
+        dispatch(Event.SetStartupAccountOverview(drawerState.showAccountOverview))
+    }
+
     DrawerContent(
         state = state.value,
         onEvent = { dispatch(it) },

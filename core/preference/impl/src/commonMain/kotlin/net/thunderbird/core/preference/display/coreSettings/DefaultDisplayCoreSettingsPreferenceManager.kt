@@ -66,6 +66,10 @@ class DefaultDisplayCoreSettingsPreferenceManager(
             DisplayCoreSettingKey.AppLanguage.value,
             DISPLAY_SETTINGS_DEFAULT_APP_LANGUAGE,
         ),
+        showAccountOverviewOnStartup = storage.getBoolean(
+            DisplayCoreSettingKey.ShowAccountOverviewOnStartup.value,
+            true,
+        ),
         splitViewMode = storage.getEnumOrDefault(
             DisplayCoreSettingKey.SplitViewMode.value,
             DISPLAY_SETTINGS_DEFAULT_SPLIT_VIEW_MODE,
@@ -89,6 +93,10 @@ class DefaultDisplayCoreSettingsPreferenceManager(
                 )
                 storageEditor.putString(DisplayCoreSettingKey.AppLanguage.value, config.appLanguage)
                 storageEditor.putEnum(DisplayCoreSettingKey.SplitViewMode.value, config.splitViewMode)
+                storageEditor.putBoolean(
+                    DisplayCoreSettingKey.ShowAccountOverviewOnStartup.value,
+                    config.showAccountOverviewOnStartup,
+                )
                 storageEditor.commit().also { commited ->
                     logger.verbose(TAG) { "writeConfig: storageEditor.commit() resulted in: $commited" }
                 }

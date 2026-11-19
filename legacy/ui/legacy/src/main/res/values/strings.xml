@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="start_account_overview_title">Show account overview on startup</string>
+    <string name="start_account_overview_summary">Show all email accounts instead of the inbox on normal startup</string>
     <!-- === App-specific strings ============================================================= -->
 
     <!-- Used in the about dialog -->

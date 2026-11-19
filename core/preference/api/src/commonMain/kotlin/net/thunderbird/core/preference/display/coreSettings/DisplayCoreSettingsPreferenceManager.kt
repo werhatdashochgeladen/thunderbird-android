@@ -9,6 +9,7 @@ enum class DisplayCoreSettingKey(val value: String) {
     MessageComposeTheme("messageComposeTheme"),
     AppLanguage("language"),
     SplitViewMode("splitViewMode"),
+    ShowAccountOverviewOnStartup("showAccountOverviewOnStartup"),
     Theme("theme"),
 }
 

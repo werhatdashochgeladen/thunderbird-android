@@ -17,4 +17,5 @@ data class DisplayCoreSettings(
     val messageComposeTheme: SubTheme = DISPLAY_SETTINGS_DEFAULT_MESSAGE_COMPOSE_THEME,
     val appLanguage: String = DISPLAY_SETTINGS_DEFAULT_APP_LANGUAGE,
     val splitViewMode: SplitViewMode = DISPLAY_SETTINGS_DEFAULT_SPLIT_VIEW_MODE,
+    val showAccountOverviewOnStartup: Boolean = true,
 )
